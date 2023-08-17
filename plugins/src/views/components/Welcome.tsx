@@ -18,7 +18,7 @@ export function Welcome() {
 
   if (!welcome) {
     onMount(() => {
-      toast.success('Pengu Loader is active!', {
+      toast.success('Pengu Loader 已激活！', {
         position: 'bottom-right',
         duration: 7000
       });
@@ -41,8 +41,8 @@ export function Welcome() {
                     <h3 class="text-base mt-0 font-semibold leading-6 text-gray-900">Pengu Loader</h3>
                     <div class="mt-2">
                       <div class="text-sm text-black">
-                        Hi Summoner, your installed plugins have been successfully loaded.
-                        Join our community to get more 😎 awesome plugins and themes now 👇
+                        欢迎！召唤师，您安装的插件已全部加载完毕。
+                        加入我们的交流社区来获取更多 😎 超酷的插件和主题 👇
                       </div>
                       <div class="flex mt-5 space-x-1">
                         <a href="https://chat.pengu.lol/" target="_blank" rel="noreferrer" class="opacity-90 hover:opacity-100">
@@ -63,14 +63,14 @@ export function Welcome() {
                 <div class="flex items-center space-x-2">
                   <input type="checkbox" id="TxrO6Gew" onChange={dontShowCheck} class="h-4 w-4 rounded border-gray-300 outline-none" />
                   <label for="TxrO6Gew" class="text-sm font-medium text-gray-700">
-                    Do not show again
+                    不再提示
                   </label>
                 </div>
                 <button
                   onClick={hide}
                   type="button"
                   class="uppercase text-sm outline-none border-none bg-gray-300/60 px-3 py-1 text-gray-900 rounded hover:bg-gray-300 cursor-pointer"
-                >Okay</button>
+                >我知道了</button>
               </div>
             </div>
           </div>

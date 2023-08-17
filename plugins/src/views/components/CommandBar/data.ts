@@ -65,51 +65,51 @@ async function quitPvPChampSelect() {
 const ACTIONS: Record<string, Action[]> = {
   pengu: [
     {
-      name: 'Visit homepage',
+      name: '访问官网',
       legend: 'pengu.lol',
       perform: () => window.open('https://pengu.lol', '_blank')
     },
     {
-      name: 'Open DevTools',
+      name: '启动开发者工具',
       legend: 'F12',
       tags: ['dev', 'console'],
       perform: () => window.openDevTools?.()
     },
     {
-      name: 'Open plugins folder',
+      name: '打开插件目录',
       tags: ['dev'],
       perform: () => window.openPluginsFolder?.()
     },
     {
-      name: 'Reload Client',
+      name: '重载客户端',
       legend: 'Ctrl Shift R',
       hidden: true,
       perform: () => window.reloadClient?.()
     },
     {
-      name: 'Restart Client',
+      name: '重启客户端',
       legend: 'Ctrl Shift Enter',
       hidden: true,
       perform: () => window.restartClient?.()
     }
   ],
-  lobby: [
+  房间: [
     {
-      name: 'Create ARAM lobby',
+      name: '创建 极地大乱斗',
       perform: () => createLobby(QueueId.ARAM)
     },
     {
-      name: 'Create 5v5 SR lobby',
+      name: '创建 自选模式',
       perform: () => createLobby(QueueId.BlindPick)
     },
     {
-      name: 'Create Practice Tool',
+      name: '创建 5V5训练营',
       perform: () => createLobby(QueueId.PracticeTool)
     },
   ],
   uncategorized: [
     {
-      name: 'Quit PvP champ-select',
+      name: '秒退',
       hidden: true,
       perform: () => quitPvPChampSelect()
     }

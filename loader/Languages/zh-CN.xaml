@@ -4,8 +4,8 @@
     xmlns:system="clr-namespace:System;assembly=mscorlib"
 >
 
-    <system:String x:Key="t_active_status">启用状态</system:String>
-    <system:String x:Key="t_options">选项</system:String>
+    <system:String x:Key="t_active_status">激活状态</system:String>
+    <system:String x:Key="t_options">更多选项</system:String>
     <system:String x:Key="t_optimize_client">优化客户端</system:String>
     <system:String x:Key="t_super_potato_mode">超低配模式</system:String>
 
@@ -13,11 +13,11 @@
     <system:String x:Key="t_open_plugins">打开插件目录</system:String>
     <system:String x:Key="t_refresh">刷新</system:String>
 
-    <system:String x:Key="t_msg_module_not_found">未找到 "core.dll"，请重新安装程序。</system:String>
-    <system:String x:Key="t_msg_restart_client">是否要重新启动正在运行的客户端以应用更改？</system:String>
-    <system:String x:Key="t_msg_activation_fail" xml:space="preserve">启动失败。&#13;请捕获错误消息，然后点击“是”进行报告。</system:String>
+    <system:String x:Key="t_msg_module_not_found">运行目录下找不到"core.dll"，请解压运行或重新安装Pengu Loader。</system:String>
+    <system:String x:Key="t_msg_restart_client">检测到英雄联盟客户端正在运行，是否快速重载客户端以应用更改？</system:String>
+    <system:String x:Key="t_msg_activation_fail" xml:space="preserve">启动失败！&#13;可能的原因：&#13;1.用户不是管理员或没有以管理员方式运行本工具。&#13;2.被本机上的安全软件阻止，请退出或卸载后重试。&#13;如以上原因排查后都无法解决请捕获以下错误信息后点击“是(Y)”前往GitHub提交反馈。</system:String>
 
-    <system:String x:Key="t_msg_optimize_client_prompt" xml:space="preserve">建议启用此选项。&#13;&#13;启用它将禁用一些未使用的内容、未使用的后台任务并减少延迟。&#13;&#13;是否继续？</system:String>
-    <system:String x:Key="t_msg_super_potato_mode_prompt" xml:space="preserve">此选项扩展了默认的低配模式。启用它将禁用所有过渡和动画效果，大大减少延迟并提高响应速度。&#13;&#13;对于配置较低的计算机非常有帮助，但可能会导致错误。请报告您遇到的问题，以帮助我们改进此模式。&#13;&#13;是否继续？</system:String>
+    <system:String x:Key="t_msg_optimize_client_prompt" xml:space="preserve">推荐启用。&#13;&#13;启用它将禁用一些未使用的内容、未使用的后台任务并减少延迟。&#13;&#13;是否继续？</system:String>
+    <system:String x:Key="t_msg_super_potato_mode_prompt" xml:space="preserve">启用超低配模式将禁用所有过渡及动画效果，极大减少画面延迟提高界面响应速度。&#13;&#13;在较低配置的设备上能获得较大提升，但可能导致客户端界面出现错误。您可以前往GitHub报告您使用此模式遇到的问题，以帮助我们改进此模式。&#13;&#13;是否继续开启超低配模式？</system:String>
 
 </ResourceDictionary>

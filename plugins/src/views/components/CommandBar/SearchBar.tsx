@@ -35,7 +35,7 @@ export function SearchBar() {
         onBlur={() => setTimeout(() => input.focus(), 50)}
         class="flex w-full px-2 py-3 text-sm bg-transparent border-none rounded-md outline-none
         placeholder:text-neutral-400 h-11 disabled:cursor-not-allowed disabled:opacity-50"
-        placeholder="Type a command or search..." autocomplete="off" autocorrect="off" spellcheck={false}
+        placeholder="键入命令或搜索..." autocomplete="off" autocorrect="off" spellcheck={false}
       />
     </div>
   )
