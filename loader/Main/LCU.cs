@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Management;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace PenguLoader.Main
 {
@@ -35,7 +37,7 @@ namespace PenguLoader.Main
         {
             var lcPath = GetDir();
 
-            if (string.IsNullOrEmpty(lcPath) || !GetCredentials(lcPath, out var port, out var pass))
+            if (string.IsNullOrEmpty(lcPath) || !GetCredentials(out var port, out var pass))
                 return null;
 
             var uri = $"https://127.0.0.1:{port}{api}";
@@ -65,26 +67,23 @@ namespace PenguLoader.Main
 
         public static Task KillUxAndRestart() => Request("/riotclient/kill-and-restart-ux", "POST");
 
-        private static bool GetCredentials(string lcPath, out string port, out string pass)
+        private static bool GetCredentials(out string port, out string pass)
         {
             try
             {
-                var lockfilePath = Path.Combine(lcPath, "lockfile");
+                string processName = "LeagueClientUx.exe";
+                string commandLine = GetCommandLineForProcess(processName);
 
-                using (var fileStream = new FileStream(lockfilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                if (!string.IsNullOrEmpty(commandLine))
                 {
-                    using (var reader = new StreamReader(fileStream))
-                    {
-                        var content = reader.ReadToEnd();
-
-                        if (!string.IsNullOrEmpty(content))
-                        {
-                            var tokens = content.Split(':');
-                            port = tokens[2];
-                            pass = tokens[3];
-                            return true;
-                        }
-                    }
+                    port = ExtractValueFromCommandLine(commandLine, "--app-port=");
+                    pass = ExtractValueFromCommandLine(commandLine, "--remoting-auth-token=");
+                    return true;
+                }
+                else
+                {
+                    port = pass = string.Empty;
+                    return false;
                 }
             }
             catch
@@ -93,6 +92,33 @@ namespace PenguLoader.Main
 
             port = pass = string.Empty;
             return false;
+        }
+
+        static string GetCommandLineForProcess(string processName)
+        {
+            using (ManagementObjectSearcher searcher = new ManagementObjectSearcher($"SELECT CommandLine FROM Win32_Process WHERE Name = '{processName}'"))
+            {
+                foreach (ManagementObject obj in searcher.Get())
+                {
+                    return obj["CommandLine"]?.ToString();
+                }
+            }
+
+            return null;
+        }
+        static string ExtractValueFromCommandLine(string commandLine, string parameter)
+        {
+            int index = commandLine.IndexOf(parameter);
+            if (index >= 0)
+            {
+                index += parameter.Length;
+                int endIndex = commandLine.IndexOf("\"", index);
+                if (endIndex > index)
+                {
+                    return commandLine.Substring(index, endIndex - index);
+                }
+            }
+            return null;
         }
     }
 }
