@@ -30,7 +30,6 @@ namespace PenguLoader
             Topmost = false;
 
             GC.Collect();
-            Updater.CheckUpdate();
         }
 
         private void ThemeButtonClick(object sender, RoutedEventArgs e)
